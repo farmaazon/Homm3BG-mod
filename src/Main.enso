@@ -33,7 +33,7 @@ prepare_units table1 =
     table14
 
 main =
-    node2 = Data.read '/home/dom/Dokumenty/Homm3bg scenariusze/mod/Data.xlsx'
+    node2 = Data.read enso_project.data/'Data.xlsx'
     table1 = node2.read 'units'
     table2 = node2.read 'buildings'
     integer2 = 2
