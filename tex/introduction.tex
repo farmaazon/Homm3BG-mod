@@ -1,0 +1,51 @@
+\begin{multicols*}{2}
+    
+    This is a set of modifications I devised which I feel made game more interesting (while not necessarily more balanced). Rule in every section may be taken independently.
+    
+    \subsection*{More \svg{ongoing} Spells}
+    
+    Every spell with \svg{instant} effect affecting in any way attacks given or received by some target unit becomes \svg{ongoing} effect affecting all given/received attacks until the end of combat round instead.
+    
+    \begin{itemize}
+        \item \emph{Curse} always reduces \svg{defense} by 1. Spell Power decides what unit may be affected: 0 - \bronze, 1 - \bronze \silver, 2 - \bronze \silver \golden
+        \item \emph{Slayer} allows drawing a card after every attack targeted at valid \svg{golden} target.
+        \item This works best with \textit{Better AI fight} modification.
+    \end{itemize}
+    
+    \subsection*{Slow/Haste effect}
+    
+    If \svg{unit_ground} or \svg{unit_flying} unit's initiative is higher/lower than it's base value due to any effect, it may move 1 square more/less.
+    
+    \subsection*{Better AI fight}
+    
+    \subsubsection*{Picking target}
+    
+    Start with all reachable enemy units and as potential targets. On every step remove from that set units which does not meet the condition. Once only one unit remains in set, it is picked for attack. If any step would remove all units, it is skipped.
+    
+    
+    \begin{itemize}
+        \item Units with \svg{attack} higher than \svg{defense} of the activated unit.
+        \item Units whose \svg{health_points} will be reduced to $0$ by attack of the activated unit.
+        \item \textit{Only when \svg{unit_ground} or \svg{unit_flying} is attacking}: Units whose will \emph{not} reduce activated unit's \svg{health_points} to $0$ on retaliation.
+        \item \textit{Only when \svg{unit_ground} or \svg{unit_flying} is attacking}: Units which may be attacked from a spot adjacent to some enemy's \svg{unit_ranged} unit.
+        \item \textit{Only when \svg{unit_ground} or \svg{unit_flying} is attacking}: Units whose retaliation will give least damage to the activated unit.
+        \item Unit picked according to the standard rules.
+    \end{itemize}
+    
+    Once a target is picked, \svg{unit_ground} and \svg{unit_flying} prioritize attacking from spots adjacent to some enemy \svg{unit_ranged}.
+   
+    When considering results of potential attack or retaliation, take all effects into account.  Assume $0$ as die result. If two dices are to be thrown, assume $-1$ and $1$ results.
+    
+    \subsubsection*{Unit deployment}
+    
+    \begin{itemize}
+        \item First nominate a \textbf{base flank} for unit's deployment: the side of the battle board, on which half there's less enemy units. If tied, compare number of units of different tiers, starting from the strongest. If still tied, pick side randomly.
+        \item Deploy all \svg{unit_ranged} in second row in order of desceding initiative, starting from \textbf{base flank}.
+        \item Then deploy one from remaining units, selecting one with higher rank, then initiative. Place it at the first square from the base flank in the first row, and -- if possible -- move it in that row to the nearest spot from where the deployed unit may reach an enemy \svg{unit_ranged} or unit which falls to firts two conditions in \textit{Picking target} subsection above.
+        \item Deploy rest of the units in the first row starting from the base flank, in standard rules order, then push them back to second row where possible.
+    \end{itemize}
+    
+    \subsection*{New units and buildings costs}
+    
+    The main idea is to transfer some cost of units to their dwellings (and Citadel in case of some reinforcements), so the recovery of the lost units is easier. Consult tables on next pages to see alternative prices of Units, Dwellings and Citadels for every faction.
+\end{multicols*}
