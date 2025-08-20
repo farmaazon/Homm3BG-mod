@@ -20,4 +20,4 @@
 tex/cache
 **/svg-inkscape/*
 
-tex/mod_variant_*.tex
+tex/generated.tex
