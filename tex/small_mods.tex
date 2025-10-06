@@ -1,24 +1,29 @@
 \addsection{Optional Modifications}{\images/wisdom.png}
 
+\textit{This is a set of smaller modifications I designed to improve the standard game, but some of them may work good also with "Dice Stacks" mod. Every section may be applied independently.}
+
 \begin{multicols*}{2}
-    
-    This is a set of modifications I devised which I feel made game more interesting (while not necessarily more balanced). Rule in every section may be taken independently.
     
     \subsection*{More \svg{ongoing} Spells}
     
-    Every spell with \svg{instant} effect affecting in any way attacks given or received by some target unit becomes \svg{ongoing} effect affecting all given/received attacks until the end of combat round instead.
+    Every \svg{instant} spell targeting some Attacking or Defending Unit becomes \svg{ongoing} effect until the end of combat round instead. During this round every Attack delivered or received by that Unit gets the Spell's effect.
     
     \begin{itemize}
-        \item \emph{Curse} always reduces \svg{defense} by 1. Spell Power decides what unit may be affected: 0 - \bronze, 1 - \bronze \silver, 2 - \bronze \silver \golden
-        \item \emph{Slayer} allows drawing a card after every attack targeted at valid \svg{golden} target.
-        \item This works best with \textit{Better AI fight} modification.
+        \item \emph{Curse} effect is modified: it always reduces \svg{defense} by 1. Spell Power decides what unit may be affected: 0 - \bronze, 1 - \bronze \silver, 2 - \bronze \silver \golden
+        \item This works best with \textit{Better AI fight} modification. The default AI may too easily make hopeless attacks or expose to strong retaliations.
     \end{itemize}
     
     \subsection*{Slow/Haste effect}
     
     If \svg{unit_ground} or \svg{unit_flying} unit's initiative is higher/lower than it's base value due to any effect, it may move 1 square more/less.
     
+    \subsection*{Better Building Material Trade}
+    
+    To improve somewhat life of Players getting two \svg{building_materials} Mines on their Far Tiles, you may allow trading 2 \svg{building_materials} for 3 \svg{gold} in addition to standard trades.
+    
     \subsection*{Better AI fight}
+    
+    \textit{These instructions should make AI fight more challenging, without forcing you to think how to play again yourself.}
     
     \subsubsection*{Picking target}
     
@@ -28,15 +33,15 @@
     \begin{itemize}
         \item Units with \svg{attack} higher than \svg{defense} of the activated unit.
         \item Units whose \svg{health_points} will be reduced to $0$ by attack of the activated unit.
-        \item \textit{Only when \svg{unit_ground} or \svg{unit_flying} is attacking}: Units which will \emph{not} reduce activated unit's \svg{health_points} to $0$ on retaliation.
-        \item \textit{Only when \svg{unit_ground} or \svg{unit_flying} is attacking}: Units which may be attacked from a spot adjacent to some enemy's \svg{unit_ranged} unit.
-        \item \textit{Only when \svg{unit_ground} or \svg{unit_flying} is attacking}: Units whose retaliation will give least damage to the activated unit.
+        \item \textit{Skip if \svg{unit_ranged} is attacking non-adjacent Unit:} Units which will \emph{not} reduce activated unit's \svg{health_points} to $0$ on retaliation.
+        \item \textit{Skip if \svg{unit_ranged} is attacking:} Units which may be attacked from a spot adjacent to some enemy's \svg{unit_ranged} unit.
+        \item \textit{Skip if \svg{unit_ranged} is attacking non-adjacent Unit:} Units whose retaliation will give least damage to the activated unit.
         \item Unit picked according to the standard rules.
     \end{itemize}
     
     Once a target is picked, \svg{unit_ground} and \svg{unit_flying} prioritize attacking from spots adjacent to some enemy \svg{unit_ranged}.
    
-    When considering results of potential attack or retaliation, take all effects into account.  Assume $0$ as die result. If two dices are to be thrown, assume $-1$ and $1$ results.
+    When considering results of potential attack or retaliation, take all effects into account.  Assume "0" as die result. If two dices are to be thrown, assume "-1" and "1" results.
     
     \subsubsection*{Unit deployment}
     

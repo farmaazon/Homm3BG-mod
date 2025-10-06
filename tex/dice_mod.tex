@@ -1,5 +1,9 @@
 \addsection{Dice Stacks Mod}{\images/luck.png}
 
+\textit{This mod introduces Qunatity Token which becomes the measurement of the Unit stack size now. Additionally, attack involves roling multiple Dice, and the \svg{attack} and \svg{defense} do not modify damage directly, but rather decide which Dice hits. Different Units may have different number of dice, making it similar to "damage" stat from the Video Game.}
+
+\textit{Another change, needed for balancing Cards used during Combat, allows you drawing new Hand every subsequent Combat Round. This adds a nice effect of seeing your dearly acquired Cards more often. On the other hand playing Cards outside Combat is more restricted.}
+
 \begin{multicols*}{2}
     \subsection*{Preparation}
     
@@ -14,18 +18,18 @@
     The "Few" and "Pack" sides of Faction Units do not represent the stack size anymore. Instead, all Unit Cards may have any number of \textbf{Quantity Tokens} on them. Every Quantity Token:
     \begin{itemize}
         \item increases number of dice rolled when attacking by one (see \textit{Damage calculation});
-        \item may be removed to reduce damage taken from any source by number depending on the Unit's tier.
+        \item may be removed to reduce damage taken from any source by number depending on the Unit's tier -- see the table at end of \textit{Damage calculation} secton.
     \end{itemize} 
     
     \medskip
     
-    \note{5}{
+    \note{6}{
         \textit{Reducing \svg{health_points-note} to 0} is treated as taking damage equal to current number of \svg{health_points-note} and may be reduced by removing Quantityu Tokens accordingly.
     }
     
     When a Unit is destroyed, remove all Quantity Tokens from it.
     
-    \textbf{Example} \textit{Alice's Gorgons have one Quantity Token and 3 Damage. They are struck by Lightning Bolt with 1 \svg{empower}. Alice removed the Quantity Token -- as Gorgons are of \svg{silver} tier, this reduces the damage by 2. The Gorgons takes 1 Damage and survives this otherwise fatal blow.}
+    \textbf{Example} \textit{Alice's Gorgons have one Quantity Token and 3 Damage. They are struck by Lightning Bolt with 1 \svg{empower}. Alice removed the Quantity Token -- as Gorgons are of \svg{silver} tier, this reduces the damage by 2. Gorgons takes 1 Damage and survives this otherwise fatal blow.}
     
     \subsection*{Upgrading Units}
     
@@ -51,7 +55,7 @@
     
     \medskip
     
-    \note{3}{
+    \note{4}{
         Upgrading a Unit does not increase its Reinforce cost -- it is stil half of the \svg{pay-note} value.
     }
     
@@ -69,7 +73,7 @@
     When a Unit attacks, instead of rolling Attack Dice, you rolls the assigned number of six-sided Dice. A sufficiently high result on a die is considered a hit and delivers one point of damage:
     \begin{itemize}
         \item "6" always hits, "1" always misses
-        \item otherwise the minimum to-hit value is equal to $6 - \svg{attack} \text{ of the attacker} + \svg{defense} \text{ of the defender}$".
+        \item otherwise the minimum to-hit value is equal to $6 - \svg{attack} \text{ of the attacker} + \svg{defense} \text{ of the defender}$.
     \end{itemize}
     Additionally:
     \begin{itemize}
@@ -77,12 +81,12 @@
         \item every attacker's \svg{attack} point exceeding defender's $\svg{defense} + 4$ increases damage by 1, but not above the number of Dice.
     \end{itemize}
     
-    The delivered damage may be then reduced by the defending Unit's owner by removing Quantity Tokens from the Unit. The damage reduction depends on defending Unit's tier -- consult the Table below. This is done before the damage is applied, so its possible to reduce damage which would otherwise defeat the Unit.
+    The delivered damage may be then reduced by the defending Unit's owner by removing Quantity Tokens, as described in \textit{Quantity Tokens} section.
     
-    \hommtablemulticol{13}{
+    \hommtablemulticol{14}{
         \centering
         \begin{tabularx}{0.96\linewidth}{p{0.12\linewidth}XX}
-            \darkcell[1.2]{} & \darkcell[1.2]{Base Dice count} & \darkcell[1.2]{Damage reduction} \\
+            \darkcell[2]{} & \darkcell[2]{Base Dice count} & \darkcell[2]{Quantity Token Damage reduction} \\
             \lightcell{\svg{bronze}} & \lightcell{2} & \lightcell{1} \\
             \lightcell{\svg{silver}} & \lightcell{3} & \lightcell{2} \\
             \lightcell{\svg{golden}} & \lightcell{4} & \lightcell{3} \\
@@ -92,11 +96,11 @@
     
     \textbf{Example} \textit{Bob's Upgraded Pit Lords with 4 Quantity Tokens attack Alice's Black Dragons. Alice plays Defense Card. With Pit Lords' 5~\svg{attack} and Dragons' 4~\svg{defense} the value to-hit is 5. Bob rolls 6, 1, 4, 5, 3, 6, 2, what gives 3 Damage total.}
         
-    \textit{Now it is time for Black Dragons' retaliation: The \svg{attack} and \svg{defense} is now 5, what would give to-hit value of 1, but "1" always misses anyway. However, because the difference is higher that 4, Dragons may add additional point of Damage. Alice rolls 1, 1, 4, 5, what gives the total Damage of 3. Even if no "1" would be rolled, the damage couldn't be higher than 4 -- the number of Dice.}
+    \textit{Now it is time for Black Dragons' retaliation: The \svg{attack} and \svg{defense} difference is now 5, what would give \mbox{to-hit} value of 1, but "1" always misses anyway. However, because the difference is higher that 4, Dragons may add additional point of Damage. Alice rolls 1, 1, 4, 5, what gives the total Damage of 3. Even if no "1" would be rolled, the damage couldn't be higher than 4 -- the number of Dice.}
     
     \subsection*{M\&M Discard Reshuffle}
     
-    If you are drawing Cards from your M\&M Deck and the Deck is empty, you stop drawing and \textbf{do not reshuffle} your Discard Pile and do not form a new M\&M Deck.
+    If you are about to drawfrom your empty M\&M Deck, you stop drawing and \textbf{do not reshuffle} your Discard Pile and do not form a new M\&M Deck.
     
     Instead, the Deck is reformed at start of your Turn: between discarding Cards and drawing up to Hand Limit, you shuffle your Discard Pile and put it under the current M\&M Deck. 
     
@@ -105,21 +109,23 @@
     When a Combat continues to the next Round: \begin{itemize}
         \item you first resolve all effects taking place at end of Combat Round (like discarding some \svg{ongoing} Cards),
         \item then you may discard any number of Cards - you don't need to go under Hand Limit,
-        \item and after that \textbf{you draw Cards up to your Hand Limit}
+        \item and after that \textbf{you draw Cards up to your Hand Limit}.
     \end{itemize}
     
     \subsection*{Playing M\&M Cards}
     
-    \textbf{Playing M\&M Cards is now more restricted}: you may play them in three situations: \begin{itemize}
+    Playing M\&M Cards is now \textbf{more restricted}: a Card may be played only: \begin{itemize}
         \item During Combat, according to the standard Rules, but you cannot receive Resources nor \svg{movement}.
-        \item Outside Combat, immediately after gaining them to your Hand.
+        \item Immediately after gaining it outside Combat, unless it is gained somewhere else than your Hand.
         \item At the beginning of your Turn, after initial drawing up to Hand Limit and before any Movement Action.
     \end{itemize}
     
-    When a Card is played outside Combat, you may decide to delay Card's effect: you may resolve it later this Turn at any momend allowed by the Effect, \textbf{but not during Combat}. In other words, the played Card may be treated as it would have "\svg{ongoing} Once this Turn, outside Combat:" before the actual text.
+    When a Card is played outside Combat, you may decide to delay Card's effect: you may resolve it later this Turn at any moment allowed by the Card, \textbf{but not during Combat}. In other words, the played Card may be treated as it would have "\svg{ongoing} Once this Turn, outside Combat:" before the actual text.
     
-    \note{6}{
-        When delaying Artifact or Ability Card's effect, you still must choose which option you take option and spent \svg{expert} right after playing.
+    \medskip
+    
+    \note{5}{
+        When delaying effect of Artifact or Ability Card's, you still must choose which option or Effect you take at the moment of Play, and spend \svg{expert-note} if required.
     }
     
     \textbf{Example 1} \textit{Alice just got Learning ability from Witch Hut. Seeing Tree of Knowledge ahead, she decides to play it and delay the Basic effect. Then moves her Hero to the Tree, and while leveling-up, resolves the Learing Effect gainig additional 1 \svg{experience}.}
@@ -128,50 +134,47 @@
             
     \subsection*{Morale}
     
-    While you have Negative Morale Token, \textbf{the hand limit during Combat is reduced by~1}.
+    While you have Negative Morale Token, the hand limit during Combat \textbf{is reduced by~1}.
     
-    \textbf{You discard Morale Token} (both Positive and Negative) \textbf{at end of a Combat}. If the Morale was Positive, you may perform a Morale Action.
+    \textbf{You discard Morale Token} (both Positive and Negative) at end of a Combat. If the Morale was Positive, you may perform a Morale Action.
     
-    \textbf{The penalty for second Negative Morale is changed}: every time you woud take a second Negative Morale Token:
+    \textbf{The penalty for second Negative Morale is changed}: every time you woud take a second Negative Morale Token you do not discard hand at end of Turin, but instead:
     \begin{itemize}
         \item you discard one card from hand immediately
         \item the hand limit for your next turn's initial draw is reduced by 1 (the draws during Combat are not affected). Put a black cube on the current card limit icon of your Hero's Level Tracker as a reminder. 
     \end{itemize} 
     \textbf{The latter effect is cumulative}: if during same turn you again would take Negative Morale Token while still having one, you limit is again reduced and you put another black cube on Level Tracker. However, your limit could never drop below 3 cards.
     
-    \textbf{Example} \textit{Alice's Main Hero has Level V, so her Hand Limit is 6, but she has a token. She moves her Hero to a guarded field with Warrior Tomb. The fight is fierce, and Alice starts her second Combat Round without Cards. She draws 5 Cards -- reduced Limit because of the Negative Morale Token. Still she defeats her opponents in the second Round, and discards the Negative Morale}
+    \textbf{Example} \textit{Alice's Main Hero has Level V, so her Hand Limit is 6, and she has Negative Morale. She moves her Hero to a guarded field with Warrior Tomb. The fight is fierce, and Alice starts her second Combat Round without Cards. She draws 5 Cards -- reduced Limit because of the Negative Morale. Still she defeats her opponents in the second Round, and discards the Negative Morale Token}
     
-    \textit{She decides to visit the Tomb, getting 2 \svg{morale_negative}. She gets Negative Morale Token again, discard a Card, and place a black cube on the icon under V on her Level Tracker. One of the gained Artifacts happens to be Crest of Valor, which she plays immediately. She discards Morale Token, but keeps the black cube.}
+    \textit{She decides to visit the Tomb, getting 2 \svg{morale_negative}. She gets Negative Morale Token again, discard a Card, and place a black cube on the icon under V on her Level Tracker. One of the gained Artifacts happens to be Crest of Valor, which she plays immediately. She discards the Morale Token, but keeps the black cube.}
     
     \subsection*{Changes to Cards, Units and Buildings}
     
-    Because you no more roll Attack Dice when Unit attacks, various effects are adjusted:
+    Because do not roll Attack Dice when Unit attacks, various Unit Abilities and Card Effects are adjusted. Below is a list of general rules with examples of Units or Cards affected by that rule:
     \begin{itemize}
-        \item If a Unit Ability activates on some Attack Dice result, you compare number of Dice with "1" and "6": \begin{itemize}
-            \item More 6s -- you activate "+1" effect.
-            \item More 1s -- you activate "-1" effect.
-            \item Equal number of 6s and 1s -- you activate "0" effect.
+        \item \textit{Basilisks. Zombies:} If a Unit Ability activates on some Attack Dice result, you compare number of Dice with "1" and "6": \begin{itemize}
+            \item More "6" -- you activate "+1" effect.
+            \item More "1" -- you activate "-1" effect.
+            \item Equal number of these -- you activate "0" effect.
         \end{itemize}
-        \item When you would roll two Attack Dice and \begin{itemize}
-            \item pick lower result -- you reroll all 6s once.
-            \item pick higher result -- you reroll all 1s once.
-            \item sum the results -- you reroll all dice except 6s and 1s once.
+        \item \textit{Halflings, Champions, Combat Penalty:} When you would roll two Attack Dice and \begin{itemize}
+            \item pick lower result -- you reroll all "6" results once.
+            \item pick higher result -- you reroll all "1" results once.
+            \item sum the results -- you reroll all results besides "1" and "6" once.
         \end{itemize} 
-        \item Rerolling Attack Dice N times and picking a result means N times rerolling Dice of your choice - everytime you may reroll a different set of Dice.
-        \item Rerolling "-1" or "+1" on Attack Dice means rerolling all 1s and 6s respectively.
-        \item Rerolling "0" on Attack Dice means rerolling equal number of 6s and 1s.
-        \item If an effect sets the Attack Die to \begin{itemize}
-            \item "-1" - you set all 6s to 1.
-            \item "1" - you set all 1s to 6.
-            \item "0" - you reroll all 1s and 6s until you get none.
-        \end{itemize}
-        \item Ignoring attack dice makes you reroll all 1s and 6s until there is none, and ignore special effects depending on Attack Die result as usual.
-        \item When you add a value to Attack Dice result, you add it to all rolled Dice, but no dice may have result greater than "6" or lower than "1".
-        \item When Attack Dice result doubled, all 5s are treated as "6", and all 2s are treated as "1".
-        \item When Attack Dice result tripled, all 4s and 5s are treated as "6", and all 2s and 3s are treated as "1".
+        \item \textit{Cards of Prophecy, Fortune:} Effects rerolling Attack Dice may be used to reroll six-side Die, but all rerolls from one Card during one Attack must be of same Die result (see Example 2).
+        \item \textit{Mintoaurs, Crusaders:} Rerolling a concrete result "-1", "0" or "+1" means rerolling "1", "3" or "6" respectively.
+        \item \textit{Mummies:} If an effect sets the Attack Die to "-1", set all "6" results to "1".
+        \item \textit{Mummies:} If the Attack Dice result is to be ignored, first compute the damage according to the standard Rules. If it's less than 4, multiply it by number of Dice and divide by 4 rounding up. Otherwise the final damage is equal to number of Dice.
+        \item \textit{Bless:} If the Attack Dice roll is to be ignored, you do not roll Dice, and compute damage as in previous point, according to number of Dice assigned to the Unit.
+        \item \textit{Ghost Dragon:} Value added to Attack Dice result is added to all rolled Dice, but no result may be greater than "6" or lower than "1".
+        \item \textit{Centaur's Axe:} When Attack Dice result tripled, all "4" and "5" are treated as "6", and all "2" and "3" results are treated as "1".
     \end{itemize}
     
-    \textbf{Example} \textit{Alice's Champions with 2 Quantity Tokens attacks another Unit. She rolls 1, 4, 1, 2, 6, 5. Both 1s are re-rolled, changing to 1, 6. The 1 is again rerolled, to~3. The two 6s are kept, and other Dice are re-rolled, and Alice must again reroll all 1s until there's none.}
+    \textbf{Example 1} \textit{Alice's Champions with 2 Quantity Tokens attacks another Unit. She rolls 1, 4, 1, 2, 6, 5. Both 1s are re-rolled, changing to 1, 6. The 1 is again rerolled, to~3. The two 6s are kept, other  rerolled, and Alice must again reroll all 1s until there's none.}
+    
+    \textbf{Example 2} \textit{Bob has Luck's Expert Effect active, and his \svg{golden} Unit is attacking. He rolled 1, 3, 3, 6. He cannot just reroll all Dice, but must pick one result to reroll. He picks "3", and reroll these two Dice.}
     
     Additionally, there are following changes to Cards, Abilities and Buildings:
     \begin{itemize}
@@ -183,12 +186,33 @@
         \item All cards allowing or affecting \textbf{Reinforcement} does that for the new definition on it, \textbf{with exceptions} of \textit{Hill Fort} and \textit{Champions} ability, which now refer to \textbf{Upgrading} instead.
     \end{itemize}
     
+    \subsection*{Combat Against AI}
+    
+    During Combat Against AI opponent, the Enemy Units first attack the Unit with \textbf{most} Dice assigned among the group of
+    \begin{itemize}
+        \item Units with same Tier and not greater number of Dice than the Attacking Unit.
+        \item Units with lower Tier
+    \end{itemize}
+    If there is no such Unit in range, a Unit with \textbf{least} Dice assigned is picked.
+    
+    On ties, first the \svg{unit_ranged} Units are prioritized, then the closest to the attacking Unit. If still there's a tie, the Player chooses the target.
+    
+    \note{7}{
+        It is possible (but not recommended) to play with "Better AI Fight" modification described in the next chapter. In that case the assumed Damage is counted as when the Dice roll is ignored.
+    }
+    
+    \textbf{Example} \textit{A \svg{silver} Unit without Quantity Tokens has the following Units in its range: \begin{itemize}
+        \item Two \svg{silver} Units, one with a Quantity Token
+        \item Two \svg{bronze} Units, one with a Quantity Token
+    \end{itemize}
+    Among these, the \svg{silver} without Token and \svg{bronze} with a Token are equally valid targets. If exactly one of them is \svg{unit_ranged}, it is picked, otherwise the closest of these two, and if distance is same, Player choses one of them.}
+    
     \subsection*{Adapting Scenarios}
     
     \begin{itemize}
-        \item \textbf{Starting Army}: "Packs" of Faction Units are replaced by \textit{not} Upgraded Units with a single Quantity Token.
-        \item \textbf{AI Army}: "Packs" of Faction Units are replaced by Upgraded Units with 2 Quantity Tokens. In longer Scenarios (more than 9 Rounds), where at some point you fight a final battle for victory, the Enemy Army in that battle may receive additional 2 Quantity Tokens for every \svg{bronze} Unit and 1 Quantity Token for every \svg{silver} Unit.
-        \item If scenario adds additional Combats with M\&M Cards at Turns beginning, the Player should not be able to play Cards both before and after any Combat. Before starting Senario you should decide what better fits: allowing playing Cards only before or only after that Combat.
+        \item \textbf{Starting Army}: "Packs" of Faction Units are replaced by \textbf{not} Upgraded Units with a single Quantity Token.
+        \item \textbf{AI Army}: "Packs" of Faction Units are replaced by Upgraded Units with 2 Quantity Tokens. In longer Scenarios (more than 9 Rounds) containg a clear "final battle" for Victory, the Enemy Army in that battle may get additional 2 Quantity Tokens on every \svg{bronze} Unit and 1 Quantity Token on every \svg{silver} Unit.
+        \item If scenario adds additional Combats with M\&M Cards at Turns beginning, the Player should not be able to play Cards both before and after it. Before starting Senario you should decide what better fits: allowing playing Cards only before or only after that Combat.
     \end{itemize}
         
 \end{multicols*}
